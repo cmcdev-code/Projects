@@ -1,3 +1,4 @@
+#include <string>
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
@@ -70,20 +71,22 @@ void coppy(bool array[60][60],bool array1[60][60],int size)
     }
 }
 void outputScreen(bool array[60][60],int sizeX,int sizeY){
-    system("CLEAR");
-    cout<<"A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A1 B1 C1 D1 E1 F1 G1 H1 I1";
-        cout<<"\n";
+    //system("CLEAR");
+    string lclstring;
+    lclstring =lclstring+"A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A1 B1 C1 D1 E1 F1 G1 H1 I1\n";
      for(int i=10;i<sizeY;i++)
         {
             for(int j=10;j<sizeX;j++){
                 if(array[i][j]){
-                    cout<<"■ ";
+                    lclstring=lclstring+"■ ";
                 }
-                else cout<<"□ ";
+                else lclstring=lclstring+"□ ";
             }
-            cout<<i-9;
-            cout<<"\n";
+            int a =i-9;
+
+            lclstring=lclstring+to_string(a)+"\n";
         }
+        cout<<lclstring;
 }
 
 
@@ -151,16 +154,16 @@ int main(void)
         }
     }
 
-//glider(cells,20,40);
+glider(cells,20,40);
 int h=0;
-    //glider(cells,34,44);
+    glider(cells,34,44);
   
-  //box(cells,30,30,30);
- //box(cells,20,20,5);
+  box(cells,30,30,30);
+ box(cells,20,20,5);
 
  lines(cells,20,20,40,1);
   outputScreen(cells,50,50);
-    while(h<10000000){
+    while(h<10){
 
         
         for(int i=1;i<59;i++)
@@ -179,7 +182,7 @@ int h=0;
         cout<<"__________________________________________________________________________________\n";
         cout<<"Cells Alive:"<<numOnScreen(cells) <<"\n"<<"Gen:"<<h<<"\n";
         
-        usleep(15000);
+        usleep(12000);
         
      h++;
     }
